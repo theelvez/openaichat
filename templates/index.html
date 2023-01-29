@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Nightmare Before Christmas OpenAI</title>
+    <style>
+        /* Set the background color and image */
+        body {
+            background-image: url("/static/images/openai_nbc_bg.png");
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-position: center;
+        }
+
+        #temperature {
+            color: #C0C0C0;
+            background-color: #461c72;
+            padding: 10px 20px;
+            border: none;
+            display: inline-block;
+            border-radius: 10px;
+            font-size: 1.2em;
+        }
+
+        #model {
+            color: #C0C0C0;
+            background-color: #461c72;
+            padding: 10px 20px;
+            border: none;
+            display: inline-block;
+            border-radius: 10px;
+            font-size: 1.2em;
+        }
+
+        /* Style the form elements */
+        form {
+            padding: 20px;
+            background-color: #f3cf74;
+            border-radius: 10px;
+            box-shadow: 0 0 10px #000000;
+            margin: 50px auto;
+            width: 60%;
+            height: 80%;
+            opacity: 0.8; /* This sets the transparency level */
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #prompt {
+            width: 100%; /* fill the entire width of the container */
+            padding: 10px; /* add some padding for readability */
+            margin: 20px 0; /* add some margin for spacing */
+            background-color: #00FF00;
+            border-radius: 10px; /* round the corners */
+            box-shadow: 0 0 10px #000000; /* add a subtle shadow */
+            min-height: 100px; /* set a minimum height */
+            font-size: 1.2em; /* set font size */
+            color: #000000; /* set text color to black */
+            resize: none; /* disable resizing of the textarea */
+        }
+
+        #dropdowns {
+            display: inline-block;
+        }
+
+        label {
+            border-radius: 10px;
+            font-size: 1.2em;
+        }
+    
+        /* Style the button */
+        #submit {
+            background-color:  #432687;
+            color: rgb(89, 222, 55);
+            padding-right: 20px;
+            border: none;
+            border-radius: 10px;
+            font-size: 1.2em;
+            margin-right: 100%;
+        }
+
+        #output {
+            width: 100%; /* fill the entire width of the container */
+            height: 100%;
+            box-sizing: content-box;
+            padding: 10px; /* add some padding for readability */
+            margin: 20px 0; /* add some margin for spacing */
+            background-color: #00FF00;
+            border-radius: 10px; /* round the corners */
+            box-shadow: 0 0 10px #000000; /* add a subtle shadow */
+            min-height: 80%; /* set a minimum height */
+            font-size: 1.2em; /* set font size */
+            color: #000000; /* set text color to black */
+            resize: none; /* disable resizing of the textarea */
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <form method="POST" action="/submit">
+        <div id="dropdowns" name="dropdowns">
+        <label >Model:</label>
+        <select id="model" name="model">
+            <option value="text-davinci-003">Text-Davinci-003</option>
+            <option value="text-davinci-002">Text-Davinci-002</option>            
+            <option value="text-curie-001">Text-Curie-001</option>
+            <option value="text-babbage-001">Text-Babbage-001</option>
+            <option value="text-bart-001">Text-Bart-001</option>
+        </select>
+        <label >Temperature:</label>
+        <select id="temperature" name="temperature">
+            <option value="0.0">0.0</option>
+            <option value="0.0">0.1</option>
+            <option value="0.0">0.2</option>
+            <option value="0.0">0.3</option>
+            <option value="0.0">0.4</option>
+            <option value="0.0">0.5</option>
+            <option value="0.0">0.6</option>
+            <option value="0.0">0.7</option>
+            <option value="0.0">0.8</option>
+            <option value="0.0">0.9</option>
+            <option value="0.0">1.0</option>
+        </select>
+    </div>
+
+        <textarea id="prompt" name="prompt" placeholder="Enter your question or command here..."></textarea>
+        <input type="submit" id="submit" value="Submit">
+
+
+        <br>
+        <br>
+        
+        {% if prompt_text %}
+        <script>
+            let textarea = document.getElementById("prompt");
+            textarea.textContent = "{{ prompt_text }}";
+        </script>
+        {% endif %}
+
+
+        {% if response_text %}
+        <textarea id="output" name="output">{{ response_text }}</textarea>
+        {% endif %}
+
+    </form>
+    
+
+</body>
+</html>
