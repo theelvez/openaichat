@@ -1,4 +1,3 @@
 {
-    "appService.defaultWebAppToDeploy": "/subscriptions/84012dae-0f83-410b-a6bd-62d32a611bbc/AppServices/subscriptions/84012dae-0f83-410b-a6bd-62d32a611bbc/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/flask-cgpt/Files/subscriptions/84012dae-0f83-410b-a6bd-62d32a611bbc/resourceGroups/appsvc_linux_centralus_basic/providers/Microsoft.Web/sites/openai-screamingelf",
-    "appService.deploySubpath": "."
+
 }
