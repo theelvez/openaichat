@@ -2,7 +2,7 @@
 FROM python:3.10
 
 # Set the working directory in the container
-WORKDIR /openai
+WORKDIR /openaichat
 
 # Copy the requirements.txt file to the container
 COPY requirements.txt .
