@@ -2,7 +2,7 @@
 
 set IMAGE_NAME=openaichatapp
 set IMAGE_TAG=openaiflask
-set CONTAINER_REGISTRY=screamingelfcontainers.azurecr.io
+set CONTAINER_REGISTRY=screamingelfcontainers
 set RESOURCE_GROUP=screamingelfresources
 set WEB_APP_NAME=openaichatapp
 set APP_SERVICE_PLAN=screamingelfappserviceplan
@@ -23,6 +23,6 @@ echo Pushing Docker image to Azure Container Registry...
 docker push %CONTAINER_REGISTRY%:%IMAGE_NAME%
 
 echo Updating Azure App Service with new Docker image...
-az webapp config container set --name %WEB_APP_NAME% --resource-group %RESOURCE_GROUP% --docker-custom-image-name %CONTAINER_REGISTRY%:%IMAGE_NAME% --docker-registry-server-url https://%CONTAINER_REGISTRY%.azurecr.io --service-plan %APP_SERVICE_PLAN%
+az webapp config container set --name openaichatapp --resource-group screamingelfresources --docker-custom-image-name openaichatapp:openaiflask --docker-registry-server-url screamingelfcontainers.azurecr.io --docker-registry-server-user screamingelfcontainers --docker-registry-server-password Zphars/tdIiu5iVLNqdYfdIBgvYsM226SuUnZOGQYE+ACRBO+rzP
 
 echo Deployment complete.
