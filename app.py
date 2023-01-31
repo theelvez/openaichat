@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import json
 import requests
 import ptvsd
+import os
 
 app = Flask(__name__)
 
@@ -13,7 +14,7 @@ def openai_post():
 
     headers = {
         "Content-Type": "application/json",
-        "Authorization": "Bearer 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"
+        "Authorization": "Bearer " + "sk-" + os.getenv("OA_K_1") + os.getenv("OA_K_2") 
     }
 
     data = json.dumps({
