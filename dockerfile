@@ -10,11 +10,19 @@ COPY requirements.txt .
 # Install the required packages
 RUN pip install --no-cache-dir -r requirements.txt
 
+# Install OpenSSH service
+RUN apt-get update && apt-get install -y openssh-server
+
 # Set an environment variable
-ENV OPENAI_API_KEY=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
+ENV OA_K_1=8aSpGVFV0tvBAlBJ0d7oT3BlbkFJBIiEybgmvRPZyY6sesH3
+ENV OA_K_2=3BlbkFJBIiEybgmvRPZyY6sesH3
 
 # Copy the rest of the application code to the container
 COPY . .
 
+# Create the bash shell script that the ENTRYPOINT command refers to
+COPY entrypoint.sh /usr/bin/
+RUN chmod +x /usr/bin/entrypoint.sh
+
 # Set the default command to run when the container starts
-CMD ["python", "app.py"]
+ENTRYPOINT ["/usr/bin/entrypoint.sh"]

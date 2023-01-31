@@ -2,20 +2,35 @@
     "version": "0.2.0",
     "configurations": [
         {
+            "name": "Python: Flask (Remote Debugging)",
+            "type": "python",
+            "request": "attach",
+            "port": 5678,
+            "host": "0.0.0.0",
+            "pathMappings": [
+                {
+                    "localRoot": "${workspaceFolder}",
+                    "remoteRoot": "/app"
+                }
+            ],
+            "justMyCode": true
+        },
+        {
             "name": "Python: Flask",
             "type": "python",
             "request": "launch",
             "module": "flask",
             "env": {
-                "FLASK_APP": "app",
-                "FLASK_ENV": "development",
-                "FLASK_RUN_HOST": "0.0.0.0",
-                "FLASK_RUN_PORT": "80"
+                "FLASK_APP": "app.py",
+                "FLASK_DEBUG": "1"
             },
             "args": [
-                "run"
+                "run",
+                "--no-debugger",
+                "--no-reload"
             ],
-            "jinja": true
+            "jinja": true,
+            "justMyCode": true
         }
     ]
 }

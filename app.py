@@ -1,7 +1,7 @@
 from flask import Flask, render_template, request
 import json
 import requests
-from config import Config
+import ptvsd
 
 app = Flask(__name__)
 
@@ -32,5 +32,8 @@ def openai_post():
 def openai_get():
     return render_template('index.html')
 
+ptvsd.enable_attach(address=('0.0.0.0', 5678), redirect_output=True)
+ptvsd.wait_for_attach()
+
 if __name__ == "__main__":
-    app.run(host=Config.HOST,port=Config.PORT, debug=True)
+    app.run(host="0.0.0.0",port=80, debug=True)
