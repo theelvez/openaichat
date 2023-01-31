@@ -14,7 +14,7 @@ RUN pip install --no-cache-dir -r requirements.txt
 RUN apt-get update && apt-get install -y openssh-server
 
 # Set an environment variable
-ENV OA_K_1=8aSpGVFV0tvBAlBJ0d7oT3BlbkFJBIiEybgmvRPZyY6sesH3
+ENV OA_K_1=8aSpGVFV0tvBAlBJ0d7oT
 ENV OA_K_2=3BlbkFJBIiEybgmvRPZyY6sesH3
 
 # Copy the rest of the application code to the container
