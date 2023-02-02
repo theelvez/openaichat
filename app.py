@@ -23,17 +23,19 @@ def openai_post():
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
 
-    logger.error(resp_temp)
-
     data = json.dumps({
         "prompt": prompt,
         "temperature": temperature,
         "max_tokens": 4000
     })
 
+    logger.error("Sending prompt: " + prompt)
+
     url = "https://api.openai.com/v1/engines/{}/completions".format(model)
     response = requests.post(url, headers=headers, data=data)
     response_text = json.loads(response.text)['choices'][0]['text']
+    
+    logger.error("Response: " + response_text)
 
     return render_template('index.html', prompt_text=prompt, response_text=response_text)
 
