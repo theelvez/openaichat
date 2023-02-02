@@ -17,8 +17,6 @@ def openai_post():
         "Authorization": "Bearer " + "sk-" + os.getenv("OA_K_1") + os.getenv("OA_K_2") 
     }
 
-    resp_temp = "Bearer " + "sk-" + os.getenv("OA_K_1") + os.getenv("OA_K_2")
-
     # Set up a logger
     logger = logging.getLogger(__name__)
     logger.setLevel(logging.INFO)
