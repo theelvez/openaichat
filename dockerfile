@@ -21,8 +21,10 @@ ENV OA_K_2=BlbkFJgGPkvaw5JUWVf3J6jZev
 COPY . .
 
 # Create the bash shell script that the ENTRYPOINT command refers to
-COPY entrypoint.sh /usr/bin/
-RUN chmod +x /usr/bin/entrypoint.sh
+#COPY entrypoint.sh /usr/bin/
+#RUN chmod +x /usr/bin/entrypoint.sh
+
+CMD ["python", "app.py"]
 
 # Set the default command to run when the container starts
-ENTRYPOINT ["/usr/bin/entrypoint.sh"]
+#ENTRYPOINT ["/usr/bin/entrypoint.sh"

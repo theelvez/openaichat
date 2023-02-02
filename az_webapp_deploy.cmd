@@ -1,28 +1,14 @@
-@echo off 
+REM Login to Azure using the Azure CLI
+az login
 
-set IMAGE_NAME=openaichatapp
-set IMAGE_TAG=openaiflask
-set CONTAINER_REGISTRY=screamingelfcontainers
-set RESOURCE_GROUP=screamingelfresources
-set WEB_APP_NAME=openaichatapp
-set APP_SERVICE_PLAN=screamingelfappserviceplan
-set APP_DIRECTORY=.
+REM Push Docker image to Azure Container Registry
+docker login screamingelfcontainers.azurecr.io -u screamingelfcontainers -p Zphars/tdIiu5iVLNqdYfdIBgvYsM226SuUnZOGQYE+ACRBO+rzP
+docker tag openaichat screamingelfcontainers.azurecr.io/openaichat:v1
+docker push screamingelfcontainers.azurecr.io/openaichat:v1
 
-@echo on
+REM Update Azure App Service Web App with the new Docker image
+az webapp config container set --name openaichatapp --resource-group screamingelfresources --docker-custom-image-name screamingelfcontainers.azurecr.io/openaichat:v1
+az webapp config appsettings set --name openaichatapp --resource-group screamingelfresources --settings WEBSITES_PORT=80
 
-echo Building Docker image...
-docker build -t %IMAGE_NAME%:%IMAGE_TAG% %APP_DIRECTORY%
-
-echo Logging into Azure Container Registry...
-az acr login --name %CONTAINER_REGISTRY%
-
-echo Tagging Docker image for Azure Container Registry...
-docker tag %IMAGE_NAME% %CONTAINER_REGISTRY%:%IMAGE_NAME%
-
-echo Pushing Docker image to Azure Container Registry...
-docker push %CONTAINER_REGISTRY%:%IMAGE_NAME%
-
-echo Updating Azure App Service with new Docker image...
-az webapp config container set --name openaichatapp --resource-group screamingelfresources --docker-custom-image-name openaichatapp:openaiflask --docker-registry-server-url screamingelfcontainers.azurecr.io --docker-registry-server-user screamingelfcontainers --docker-registry-server-password Zphars/tdIiu5iVLNqdYfdIBgvYsM226SuUnZOGQYE+ACRBO+rzP
-
-echo Deployment complete.
+REM Restart the Azure App Service Web App
+az webapp restart --name openaichatapp --resource-group screamingelfresources

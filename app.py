@@ -1,9 +1,7 @@
 from flask import Flask, render_template, request
 import json
 import requests
-import ptvsd
 import os
-import logging
 
 app = Flask(__name__)
 
@@ -20,12 +18,6 @@ def openai_post():
 
     resp_temp = "Bearer " + "sk-" + os.getenv("OA_K_1") + os.getenv("OA_K_2")
 
-    # Set up a logger
-    logger = logging.getLogger(__name__)
-    logger.setLevel(logging.INFO)
-
-    logger.warning(resp_temp)
-
     data = json.dumps({
         "prompt": prompt,
         "temperature": temperature,
@@ -41,9 +33,6 @@ def openai_post():
 @app.route("/openai", methods=['GET'])
 def openai_get():
     return render_template('index.html')
-
-ptvsd.enable_attach(address=('0.0.0.0', 5678), redirect_output=True)
-ptvsd.wait_for_attach()
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=80, debug=True)
