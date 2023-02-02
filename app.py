@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 import json
 import requests
 import os
+import logging
 
 app = Flask(__name__)
 
@@ -17,6 +18,12 @@ def openai_post():
     }
 
     resp_temp = "Bearer " + "sk-" + os.getenv("OA_K_1") + os.getenv("OA_K_2")
+
+    # Set up a logger
+    logger = logging.getLogger(__name__)
+    logger.setLevel(logging.INFO)
+
+    logger.error(resp_temp)
 
     data = json.dumps({
         "prompt": prompt,

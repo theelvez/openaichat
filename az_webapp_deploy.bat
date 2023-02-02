@@ -3,7 +3,7 @@ az login
 
 REM Push Docker image to Azure Container Registry
 docker login screamingelfcontainers.azurecr.io -u screamingelfcontainers -p Zphars/tdIiu5iVLNqdYfdIBgvYsM226SuUnZOGQYE+ACRBO+rzP
-docker tag openaichat screamingelfcontainers.azurecr.io/openaichat:v1
+docker tag openaichat:v1 screamingelfcontainers.azurecr.io/openaichat:v1
 docker push screamingelfcontainers.azurecr.io/openaichat:v1
 
 REM Update Azure App Service Web App with the new Docker image
