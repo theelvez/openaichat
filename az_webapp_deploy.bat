@@ -3,7 +3,7 @@ az login
 
 REM Build the docker image
 docker build -t openaichat:v1 .
-REM
+
 REM Push Docker image to Azure Container Registry
 docker login screamingelfcontainers.azurecr.io -u screamingelfcontainers -p Zphars/tdIiu5iVLNqdYfdIBgvYsM226SuUnZOGQYE+ACRBO+rzP
 docker tag openaichat:v1 screamingelfcontainers.azurecr.io/openaichat:v1
