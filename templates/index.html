@@ -55,7 +55,7 @@
             background-color: #00FF00;
             border-radius: 10px; /* round the corners */
             box-shadow: 0 0 10px #000000; /* add a subtle shadow */
-            min-height: 100px; /* set a minimum height */
+            height: 80%; /* set a minimum height */
             font-size: 1.2em; /* set font size */
             color: #000000; /* set text color to black */
             resize: none; /* disable resizing of the textarea */
@@ -80,21 +80,6 @@
             font-size: 1.2em;
             margin-right: 100%;
         }
-
-        #output {
-            width: 100%; /* fill the entire width of the container */
-            height: 100%;
-            box-sizing: content-box;
-            padding: 10px; /* add some padding for readability */
-            margin: 20px 0; /* add some margin for spacing */
-            background-color: #00FF00;
-            border-radius: 10px; /* round the corners */
-            box-shadow: 0 0 10px #000000; /* add a subtle shadow */
-            min-height: 80%; /* set a minimum height */
-            font-size: 1.2em; /* set font size */
-            color: #000000; /* set text color to black */
-            resize: none; /* disable resizing of the textarea */
-        }
     </style>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
@@ -109,7 +94,7 @@
             <option value="text-babbage-001">Text-Babbage-001</option>
             <option value="text-bart-001">Text-Bart-001</option>
         </select>
-        <label >Temperature:</label>
+        <label>Temperature:</label>
         <select id="temperature" name="temperature">
             <option value="0.0">0.0</option>
             <option value="0.1">0.1</option>
@@ -125,27 +110,12 @@
         </select>
     </div>
 
-        <textarea id="prompt" name="prompt" placeholder="Enter your question or command here..."></textarea>
+        <textarea id="prompt" name="prompt" autofocus>{{ prompt_text }}</textarea>
         <input type="submit" id="submit" value="Submit">
-
-
+ 
         <br>
         <br>
-        
-        {% if prompt_text %}
-        <script>
-            let textarea = document.getElementById("prompt");
-            textarea.textContent = "{{ prompt_text }}";
-        </script>
-        {% endif %}
-
-
-        {% if response_text %}
-        <textarea id="output" name="output">{{ response_text }}</textarea>
-        {% endif %}
-
     </form>
     
-
 </body>
 </html>
