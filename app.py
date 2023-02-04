@@ -6,6 +6,9 @@ import openai
 
 app = Flask(__name__)
 
+'''
+submit path
+'''
 @app.route("/submit", methods=['POST'])
 def openai_post():
     model = request.form['model']
@@ -37,11 +40,30 @@ def openai_post():
 
     prompt_text += response_text + "\n\nYou: "
 
-    return render_template('index.html', prompt_text=prompt_text)
+    if request.user_agent.platform in ['android', 'iphone', 'ipad']:
+        return render_template('mobile_index.html', prompt_text=prompt_text)
+    else:
+        return render_template('index.html', prompt_text=prompt_text)
 
+
+'''
+default desktop path
+'''
 @app.route("/", methods=['GET'])
 def openai_get():
-    return render_template('index.html', prompt_text="You: ")
+    if request.user_agent.platform in ['android', 'iphone', 'ipad']:
+        return render_template('mobile_index.html', prompt_text="You: ")
+    else:
+        return render_template('index.html', prompt_text="You: ")
+
+
+'''
+default mobile path
+'''
+@app.route('/mobile', methods=['GET'])
+def openai_mobile_get():
+    return 'Mobile device detected'
+
 
 if __name__ == "__main__":
     app.run(host="0.0.0.0",port=80, debug=True)
