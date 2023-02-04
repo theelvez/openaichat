@@ -1,0 +1,3 @@
+{"prompt": "Meilė yra nuostabi dalykas", "completion": "Meilė yra nuostabus dalykas"}
+{"prompt": "Rugiagėlės žėins lietuje", "completion": "Rugiagėlės žėri lietuje"}
+{"prompt": "Švytinti saulės spinduliai", "completion": "Švytintys saulės spinduliai"}
