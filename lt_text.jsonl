@@ -1,3 +1,6 @@
-{"prompt": "Meilė yra nuostabi dalykas", "completion": "Meilė yra nuostabus dalykas"}
-{"prompt": "Rugiagėlės žėins lietuje", "completion": "Rugiagėlės žėri lietuje"}
-{"prompt": "Švytinti saulės spinduliai", "completion": "Švytintys saulės spinduliai"}
+{"incorrect": "Meilė yra nuostabi dalykas", "correct": "Meilė yra nuostabus dalykas"}
+{"incorrect": "Rugiagėlės žėins lietuje", "correct": "Rugiagėlės žėri lietuje"}
+{"incorrect": "Švytinti saulės spinduliai", "correct": "Švytintys saulės spinduliai"}
+{"incorrect": "Nuostabi giliai meilė", "correct" : "Nuostabi gili meilė"}
+{"incorrect": "Kur yra mano nauja kompiuteris", "correct" : "Kur yra mano nauji kompiuteriai"}
+

@@ -1,4 +1,4 @@
-1. The first section of a high-quality large language model prompt is 
+The first section of a high-quality large language model prompt is 
 the context or background information. This sets the stage for the task at hand and provides necessary information for the model to make predictions or generate text. It is important because it allows the model to understand the context and make more accurate predictions or outputs.
 
 The second section is the task description. This clearly outlines what the model is expected to do, whether it is to generate text, answer questions, or make predictions. This section is important because it sets clear expectations for the model and helps to guide its output.
